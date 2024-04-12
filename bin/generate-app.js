@@ -38,6 +38,7 @@ async function main() {
       }
       else {
         var json = JSON.parse(data);
+        json.name = projectName;
         console.log('"' + json.name + '": "' + json.version + '",');
       }
     });
@@ -47,7 +48,7 @@ async function main() {
 
     console.log('Removing setup files');
     execSync('npx rimraf ./.git');
-    fs.rmdirSync(path.join(projectPath, 'bin'), { recursive: true});
+    fs.rmSync(path.join(projectPath, 'bin'), { recursive: true});
 
     console.log('Installation complete, run "npm start" to run your application.');
 
